@@ -1,0 +1,2174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate Visibility Platform Benchmark &mdash; Steward Partners Global Advisory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   Steward Partners Benchmark — Confluence FP Design System
+   Aligned with Confluence FP tokens, typography, spacing, components
+   ================================================================ */
+
+:root {
+    --bg: #f5f3ed;
+    --surface: #ffffff;
+    --card: #ffffff;
+    --card-alt: #f0ede6;
+    --elevated: #e8e4dc;
+    --navy: #141d2b;
+    --navy-medium: #1e2a3a;
+    --navy-light: #2d3d50;
+    --accent: #ffb84d;
+    --accent-glow: rgba(255,184,77,0.2);
+    --accent-border: rgba(255,184,77,0.3);
+    --accent-subtle: rgba(255,184,77,0.10);
+    --text-primary: #141d2b;
+    --text-secondary: rgba(20,29,43,0.7);
+    --text-muted: rgba(20,29,43,0.45);
+    --text-faint: rgba(20,29,43,0.2);
+    --color-green: #22863a;
+    --color-red: #cf222e;
+    --color-green-bg: rgba(34,134,58,0.08);
+    --color-red-bg: rgba(207,34,46,0.08);
+    --yellow: #fbbf24;
+    --yellow-dim: rgba(251,191,36,0.10);
+    --blue: #8ab4f8;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --font-display: 'Inter Tight', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    --header-bg: rgba(245,243,237,0.92);
+    --nav-bg: rgba(245,243,237,0.95);
+}
+
+[data-theme="dark"] {
+    --bg: var(--navy);
+    --surface: var(--navy-medium);
+    --card: var(--navy-medium);
+    --card-alt: var(--navy-light);
+    --elevated: var(--navy-light);
+    --text-primary: #f5f3ed;
+    --text-secondary: rgba(245,243,237,0.7);
+    --text-muted: rgba(245,243,237,0.45);
+    --text-faint: rgba(245,243,237,0.1);
+    --header-bg: rgba(20,29,43,0.92);
+    --nav-bg: rgba(20,29,43,0.95);
+}
+
+[data-theme="dark"] .download-btn { background: #f5f3ed; color: var(--navy); }
+[data-theme="dark"] .download-btn:hover { background: #e8e4dc; }
+[data-theme="dark"] .heatmap-mid { color: var(--yellow); }
+[data-theme="dark"] .scope-national { color: var(--yellow); }
+[data-theme="dark"] .kpi-card { background: var(--navy-light); }
+[data-theme="dark"] thead th { background: var(--navy-light); }
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 130px; }
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background 0.3s, color 0.3s;
+}
+
+.site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: var(--header-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--text-faint);
+    height: 56px;
+    transition: background 0.3s;
+}
+
+.header-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 56px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    opacity: 0.55;
+    display: flex;
+    align-items: center;
+}
+
+.brand .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--accent);
+    margin-right: 10px;
+}
+
+.header-actions { display: flex; align-items: center; gap: 8px; }
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: none;
+    border: 1px solid var(--text-faint);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 16px;
+    transition: all 0.2s;
+}
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--navy);
+    color: #f5f3ed;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.download-btn:hover { background: var(--navy-medium); transform: translateY(-1px); }
+.download-btn svg { width: 14px; height: 14px; }
+
+.hero {
+    padding: 140px 24px 72px;
+    text-align: center;
+    background: var(--bg);
+    border-bottom: 1px solid var(--text-faint);
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(255,184,77,0.12);
+    border: 1px solid rgba(255,184,77,0.25);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+.hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    text-wrap: balance;
+}
+
+.hero-sub {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.hero-meta {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.nav {
+    position: sticky;
+    top: 56px;
+    z-index: 900;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--text-faint);
+}
+
+.nav-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 4px 56px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+}
+
+.nav a {
+    display: block;
+    padding: 8px 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.nav a:hover, .nav a.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.container { max-width: 1040px; margin: 0 auto; padding: 0 56px; }
+
+section { padding: 80px 0 64px; border-top: 1px solid var(--text-faint); border-bottom: none; }
+section:first-child { border-top: none; }
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+}
+.eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    text-wrap: balance;
+    max-width: 760px;
+}
+
+.section-desc {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 680px;
+    margin-bottom: 32px;
+}
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.kpi-card {
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 32px 28px;
+    text-align: center;
+    min-height: 140px;
+}
+
+.kpi-card--accent {
+    background: var(--navy);
+    border-color: transparent;
+}
+
+.kpi-value {
+    font-family: var(--font-display);
+    font-size: 3em;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.kpi-card--accent .kpi-value { color: var(--accent); }
+
+.kpi-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(245,243,237,0.6);
+    line-height: 1.3;
+}
+
+.callout-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+
+.callout-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--card);
+    border: 1px solid var(--text-faint);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 16px 20px;
+}
+
+.callout-item--red { border-left-color: var(--color-red); }
+.callout-item--green { border-left-color: var(--color-green); }
+
+.callout-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 1px;
+}
+
+.callout-icon--red { background: var(--color-red-bg); color: var(--color-red); }
+.callout-icon--amber { background: var(--yellow-dim); color: #d97706; }
+.callout-icon--green { background: var(--color-green-bg); color: #059669; }
+
+.callout-text { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+.callout-text strong { color: var(--text-primary); }
+.callout-text .stat { font-family: var(--font-mono); font-weight: 500; color: var(--text-primary); }
+
+.content-card {
+    background: var(--card);
+    border: 1px solid var(--text-faint);
+    border-radius: var(--radius-md);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+}
+
+.content-card__heading {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.content-card__heading::before {
+    content: "";
+    width: 18px;
+    height: 1px;
+    background: var(--accent);
+}
+
+.content-card__body { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+.content-card__body p { margin-bottom: 8px; }
+.content-card__body p:last-child { margin-bottom: 0; }
+.content-card__body strong { color: var(--text-primary); }
+
+.narrative { font-size: 14px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 24px; }
+.narrative p { margin-bottom: 12px; }
+.narrative p:last-child { margin-bottom: 0; }
+.narrative strong { color: var(--text-primary); }
+
+.table-scroll-wrap { position: relative; }
+
+.table-scroll-wrap.can-scroll::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 40px;
+    background: linear-gradient(90deg, transparent, var(--card));
+    pointer-events: none;
+    z-index: 5;
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    transition: opacity 0.3s;
+}
+
+.table-scroll-wrap.scrolled-end::after { opacity: 0; }
+
+.table-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--text-faint);
+    background: var(--card);
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+thead th {
+    background: var(--navy);
+    color: #fff;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    border-bottom: none;
+    white-space: nowrap;
+}
+
+td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--text-faint);
+    color: var(--text-secondary);
+    vertical-align: top;
+}
+tr:last-child td { border-bottom: 0; }
+
+.prospect-cell { color: var(--text-primary); font-weight: 700; background: rgba(255,184,77,0.06); }
+
+.arch-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.arch-card {
+    background: var(--card);
+    border: 1px solid var(--text-faint);
+    border-radius: var(--radius-md);
+    padding: 24px;
+}
+
+.arch-card--danger { border-color: rgba(207,34,46,0.3); background: var(--color-red-bg); }
+
+.arch-card__name { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--text-primary); margin-bottom: 2px; }
+.arch-card--danger .arch-card__name { color: #dc2626; }
+.arch-card__domain { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
+.arch-card__label { font-size: 11px; font-weight: 600; color: var(--text-secondary); margin-bottom: 10px; }
+
+.arch-card .tree { font-family: var(--font-mono); font-size: 11px; line-height: 1.7; color: var(--text-muted); }
+.arch-card .tree .node { color: var(--accent); }
+.arch-card .tree .url { color: #059669; }
+.arch-stat { margin-top: 10px; font-size: 12px; color: var(--text-secondary); font-weight: 600; }
+.arch-stat__num { font-family: var(--font-display); font-size: 22px; font-weight: 800; color: var(--accent); margin-right: 4px; }
+.arch-card--danger .arch-stat__num { color: #dc2626; }
+
+.yes { color: var(--color-green); font-weight: 600; }
+.no { color: var(--color-red); font-weight: 600; }
+.partial { color: #d97706; font-weight: 600; }
+.url-example { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); word-break: break-all; }
+
+.opp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 32px; }
+
+.opp-card {
+    background: rgba(255,184,77,0.08);
+    border: 1px solid rgba(255,184,77,0.25);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    text-align: center;
+}
+
+.opp-card__value { font-family: var(--font-display); font-size: 40px; font-weight: 900; color: var(--accent); line-height: 1; margin-bottom: 8px; letter-spacing: -0.04em; }
+.opp-card__label { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
+.opp-card__detail { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+
+.arch-diagram { margin-bottom: 32px; }
+.arch-level { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+.arch-level:nth-child(2) { padding-left: 24px; }
+.arch-level:nth-child(3) { padding-left: 48px; }
+.arch-level:nth-child(4) { padding-left: 72px; }
+
+.arch-level__box {
+    background: var(--card);
+    border: 1px solid var(--text-faint);
+    border-radius: var(--radius-sm);
+    padding: 10px 16px;
+    min-width: 200px;
+}
+
+.arch-level__box--active { border-color: rgba(255,184,77,0.4); background: rgba(255,184,77,0.08); }
+.arch-level__label { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.arch-level__url { font-family: var(--font-mono); font-size: 11px; color: var(--accent); }
+.arch-level__arrow { color: var(--text-muted); font-size: 18px; }
+.arch-level__desc { font-size: 12px; color: var(--text-muted); max-width: 320px; line-height: 1.5; }
+
+.service-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.service-tag {
+    padding: 6px 14px;
+    background: rgba(255,184,77,0.08);
+    border: 1px solid rgba(255,184,77,0.25);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.market-table-wrap { margin-bottom: 40px; }
+.market-table-header { margin-bottom: 12px; }
+.market-table-header h3 { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+.market-table-header p { font-size: 12px; color: var(--text-muted); }
+
+.ranking-table { font-size: 12px; }
+.ranking-table th { font-size: 10px; padding: 8px; vertical-align: bottom; }
+.ranking-table td { padding: 6px 8px; text-align: center; font-family: var(--font-mono); font-size: 12px; }
+.ranking-table .col-keyword { text-align: left; font-family: var(--font-body); font-size: 12px; white-space: nowrap; position: sticky; left: 0; z-index: 2; background: var(--card); }
+.ranking-table thead .col-keyword { background: var(--navy); color: #fff; z-index: 3; }
+.ranking-table .col-keyword::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 1px; background: var(--text-faint); }
+.ranking-table .col-vol { text-align: right; font-size: 11px; }
+.ranking-table .col-prospect { text-align: center; font-size: 10px; font-weight: 700; background: rgba(255,184,77,0.06); }
+.ranking-table thead .col-prospect { background: rgba(255,184,77,0.12); }
+.ranking-table .col-comp { text-align: center; font-size: 10px; line-height: 1.3; }
+
+.ranking-table .cell-prospect { background: rgba(255,184,77,0.06); }
+
+.scroll-hint { font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 8px; letter-spacing: 0.02em; display: none; }
+.scroll-hint.visible { display: block; }
+.scroll-hint::before { content: '\2190 \2192'; margin-right: 6px; color: var(--accent); }
+
+.table-scroll-wrap.can-scroll .scroll-arrow {
+    position: absolute;
+    right: 12px; top: 50%;
+    transform: translateY(-50%);
+    z-index: 6;
+    color: var(--accent);
+    font-size: 18px;
+    opacity: 0.7;
+    animation: nudge 1.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.table-scroll-wrap.scrolled-end .scroll-arrow { display: none; }
+
+@keyframes nudge {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(-50%) translateX(5px); }
+}
+
+.scope-badge { display: block; font-size: 9px; font-weight: 500; margin-top: 2px; opacity: 0.6; }
+.scope-local { color: #059669; }
+.scope-national { color: #d97706; }
+
+.cell-prospect { font-weight: 700; }
+.cell-empty { opacity: 0.3; }
+.heatmap-top3 { background: rgba(34,134,58,0.15); color: var(--color-green); font-weight: 700; }
+.heatmap-top10 { background: rgba(34,134,58,0.06); color: var(--color-green); }
+.heatmap-mid { background: rgba(251,191,36,0.08); color: #b45309; }
+
+.market-tabs-wrap { margin-bottom: 24px; }
+.market-tabs-label { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+.market-tabs-label span { color: var(--accent); }
+.market-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; flex-wrap: wrap; }
+
+.market-tab {
+    padding: 10px 20px;
+    background: var(--card);
+    border: 1px solid var(--text-faint);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.market-tab:hover { border-color: rgba(255,184,77,0.3); color: var(--text-primary); background: rgba(255,184,77,0.04); }
+.market-tab.active { background: rgba(255,184,77,0.1); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+.market-panel { display: none; }
+.market-panel.active { display: block; }
+
+/* Growth Equation Section */
+.growth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+.growth-card {
+    background: var(--card);
+    border: 1px solid var(--text-faint);
+    border-radius: var(--radius-md);
+    padding: 32px 28px;
+    position: relative;
+}
+.growth-card__eyebrow {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+.growth-card__title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+.growth-card__stat {
+    font-family: var(--font-display);
+    font-size: 3em;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+    margin-bottom: 8px;
+    line-height: 1;
+}
+.growth-card__desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+.growth-connector {
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+}
+.growth-connector__symbol {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent-subtle);
+    border: 1px solid var(--accent-border);
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+}
+.growth-outcome {
+    background: var(--card);
+    border: 1px solid var(--accent-border);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    margin-bottom: 32px;
+    text-align: center;
+}
+.growth-outcome__title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+.growth-outcome__desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.growth-channels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+}
+.growth-channel {
+    background: var(--card);
+    border: 1px solid var(--text-faint);
+    border-radius: var(--radius-md);
+    padding: 24px;
+}
+.growth-channel__label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+.growth-channel__title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+.growth-channel__desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+@media (max-width: 700px) {
+    .growth-grid { grid-template-columns: 1fr; }
+    .growth-channels { grid-template-columns: 1fr; }
+}
+
+.stool-intro { font-size: 16px; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.65; }
+.stool-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+.stool-card {
+    background: var(--card);
+    border: 1px solid var(--text-faint);
+    border-radius: var(--radius-md);
+    padding: 28px;
+}
+.stool-card__icon {
+    width: 36px; height: 36px; border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; margin-bottom: 14px;
+}
+.stool-card__icon--referrals { background: rgba(138,180,248,0.12); color: var(--blue); }
+.stool-card__icon--coi { background: var(--color-green-bg); color: var(--color-green); }
+.stool-card__icon--organic { background: var(--yellow-dim); color: var(--accent); }
+.stool-card h4 { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+.stool-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+.stool-footnote { font-size: 13px; color: var(--text-secondary); line-height: 1.7; border-left: 2px solid var(--accent); padding-left: 16px; }
+
+.detail-sections { display: none; }
+.detail-sections.expanded { display: block; }
+
+.nav { display: none; }
+.nav.visible { display: block; }
+
+.expand-cta {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 48px 56px;
+    text-align: center;
+}
+
+.expand-btn {
+    display: inline-block;
+    background: var(--card);
+    border: 1px solid var(--text-faint);
+    border-radius: var(--radius-lg);
+    padding: 32px 40px;
+    cursor: pointer;
+    transition: all 0.2s;
+    max-width: 520px;
+    width: 100%;
+}
+
+.expand-btn:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(255,184,77,0.1);
+}
+
+.expand-btn__text {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.expand-btn__sub {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.expand-btn__arrow {
+    display: block;
+    font-size: 20px;
+    color: var(--accent);
+    animation: nudge-down 1.5s ease-in-out infinite;
+}
+
+@keyframes nudge-down {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+}
+
+.expand-cta.hidden { display: none; }
+
+.invest-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 32px; }
+.invest-card {
+    background: var(--card);
+    border: 1px solid var(--text-faint);
+    border-radius: var(--radius-md);
+    padding: 32px 28px;
+}
+.invest-card__eyebrow {
+    font-family: var(--font-body);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 12px;
+}
+.invest-card__price {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 36px); font-weight: 900;
+    color: var(--accent); line-height: 1.1; margin-bottom: 4px;
+    letter-spacing: -0.04em;
+}
+.invest-card__unit {
+    font-family: var(--font-mono);
+    font-size: 12px; color: var(--text-muted);
+    letter-spacing: 0.02em; margin-bottom: 16px;
+}
+.invest-card__list { list-style: none; padding: 0; }
+.invest-card__list li {
+    font-size: 13px; color: var(--text-secondary);
+    padding: 5px 0; border-bottom: 1px solid var(--text-faint);
+    display: flex; align-items: center; gap: 8px;
+}
+.invest-card__list li:last-child { border-bottom: none; }
+.invest-card__list li::before {
+    content: ''; width: 4px; height: 4px;
+    border-radius: 50%; background: var(--accent); flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .invest-grid { grid-template-columns: 1fr; }
+}
+
+.cta-section { text-align: center; padding: 80px 24px; }
+.cta-section h2 { font-family: var(--font-display); font-size: clamp(26px, 4vw, 36px); font-weight: 800; letter-spacing: -0.025em; color: var(--text-primary); margin-bottom: 16px; }
+.cta-section p { font-size: 16px; color: var(--text-secondary); max-width: 580px; margin: 0 auto 16px; line-height: 1.65; }
+.cta-section p strong { color: var(--text-primary); }
+
+footer { background: var(--elevated); border-top: 1px solid var(--text-faint); padding: 24px; }
+
+.footer-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.data-source { font-size: 11px; color: var(--text-muted); margin-top: 16px; font-family: var(--font-mono); }
+.divider { height: 1px; background: var(--text-faint); margin: 24px 0; }
+
+@media print {
+    .site-header, .nav, .hero-badge, .download-btn, .theme-toggle, .expand-cta { display: none !important; }
+    .detail-sections { display: block !important; }
+    @page { size: letter; margin: 0.5in; }
+    body { background: white !important; color: #141d2b !important; }
+    .hero { padding-top: 40px; background: white !important; border: none; }
+    .container { max-width: 100%; padding: 0; }
+    section { break-inside: avoid; page-break-after: auto; padding: 20px 0; border: none; }
+    table { break-inside: auto; }
+    thead { display: table-header-group; }
+    tr { break-inside: avoid; }
+    .table-scroll { overflow: visible; }
+    .market-panel { display: block !important; }
+    .market-tabs-wrap { display: none; }
+    .scroll-hint, .scroll-arrow { display: none !important; }
+    .table-scroll-wrap::after { display: none !important; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+
+@media (max-width: 768px) {
+    body { font-size: 14px; }
+    .hero { padding: 100px 16px 32px; }
+    .hero h1 { font-size: 26px; }
+    .hero-sub { font-size: 16px; }
+    .hero-meta { font-size: 12px; }
+    .container { padding: 0 16px; }
+    section { padding: 40px 0; }
+    .section-title { font-size: 22px; }
+    .section-desc { font-size: 14px; }
+    .eyebrow { font-size: 10px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .kpi-value { font-size: 28px; }
+    .kpi-label { font-size: 10px; }
+    .arch-grid { grid-template-columns: 1fr; }
+    .opp-grid { grid-template-columns: 1fr; }
+    .arch-level { flex-direction: column; align-items: flex-start; padding-left: 0 !important; }
+    .arch-level__desc { max-width: 100%; }
+    .footer-inner { flex-direction: column; gap: 8px; }
+    .callout-text { font-size: 13px; }
+    .narrative { font-size: 13px; }
+    .content-card__heading { font-size: 14px; }
+    .nav a { padding: 6px 10px; font-size: 10px; }
+    .scroll-arrow { font-size: 14px !important; right: 6px !important; }
+    .stool-grid { grid-template-columns: 1fr; }
+    .market-tabs { flex-wrap: nowrap; }
+}
+</style>
+<script>try{if(localStorage.getItem('steward-theme')!=='light')document.documentElement.setAttribute('data-theme','dark')}catch(e){document.documentElement.setAttribute('data-theme','dark')}</script>
+</head>
+<body>
+
+<div id="main-content">
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand"><span class="dot"></span>Mileage</div>
+    <div class="header-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">&#9790;</button>
+      <button class="download-btn" id="share-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        Share
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="hero-badge">National Platform Assessment</span>
+  <h1>Corporate Visibility<br>Platform Benchmark</h1>
+  <p class="hero-sub">Steward Partners Global Advisory</p>
+  <div class="hero-meta">5 Markets &mdash; June 9, 2026</div>
+</section>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#growth-equation">Growth</a>
+    <a href="#organic-engine">Why?</a>
+    <a href="#exec-summary">Summary</a>
+    <a href="#domain-authority">Domain Authority</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#markets">Market Rankings</a>
+    <a href="#gap-analysis">Gap Analysis</a>
+    <a href="#opportunity">Opportunity</a>
+    <a href="#recommendations">Recommendations</a>
+    <a href="#investment">Investment</a>
+  </div>
+</nav>
+
+<main class="container">
+
+<section id="growth-equation">
+  <div class="eyebrow">The Growth Equation</div>
+  <h2 class="section-title">Two engines, one objective</h2>
+  <p class="section-desc">Steward Partners grows through two distinct engines. Both are working. But only one of them is getting digital infrastructure support.</p>
+
+  <div class="growth-grid">
+    <div class="growth-card">
+      <div class="growth-card__eyebrow">Engine 1</div>
+      <div class="growth-card__title">Inorganic Growth</div>
+      <div class="growth-card__stat">~$3.9B</div>
+      <div class="growth-card__desc">New client assets added in 2025 through 11 advisor team acquisitions and transitions. Every deal adds offices, advisors, and AUM to the platform &mdash; accelerating national footprint expansion across new and existing markets.</div>
+    </div>
+    <div class="growth-card">
+      <div class="growth-card__eyebrow">Engine 2</div>
+      <div class="growth-card__title">Organic Growth</div>
+      <div class="growth-card__stat">~$50B</div>
+      <div class="growth-card__desc">Total client assets under management, grown through existing teams deepening client relationships, market appreciation, and net new client acquisition at the local level. This is the compound engine &mdash; every advisor in every office, growing AUM year over year.</div>
+    </div>
+  </div>
+
+  <div class="growth-connector">
+    <div class="growth-connector__symbol">+</div>
+  </div>
+
+  <div class="growth-outcome">
+    <div class="growth-outcome__title">Both engines need the same fuel: qualified prospects finding the right advisor</div>
+    <div class="growth-outcome__desc">Acquisitions bring advisors onto the platform. Organic growth keeps them productive. Both require prospects to discover Steward Partners teams in their local market &mdash; and right now, that discovery layer hasn&rsquo;t been built yet.</div>
+  </div>
+
+  <div class="growth-channels">
+    <div class="growth-channel">
+      <div class="growth-channel__label">Channel 1</div>
+      <div class="growth-channel__title">Client acquisition through 80+ team websites</div>
+      <div class="growth-channel__desc">When a CPA in Sarasota refers a client, that prospect Googles the advisor before calling. When a retiree in Dallas searches &ldquo;wealth management near me,&rdquo; they find firms with location pages &mdash; not firms with no local presence. Every team website is an untapped search asset that should be driving qualified prospects to the advisors already on the platform.</div>
+    </div>
+    <div class="growth-channel">
+      <div class="growth-channel__label">Channel 2</div>
+      <div class="growth-channel__title">Advisor recruitment through platform credibility</div>
+      <div class="growth-channel__desc">When a breakaway advisor hears about Steward Partners through a recruiter or peer, they Google the firm before taking the first call. What they find shapes credibility. A visible, well-built search presence signals the operational maturity that a $500M advisor team evaluates alongside economics, technology, and culture.</div>
+    </div>
+  </div>
+</section>
+
+<section id="organic-engine">
+  <div class="eyebrow">Why?</div>
+  <h2 class="section-title">Three legs of organic growth</h2>
+  <p class="stool-intro">Your serious competitors are growing on three legs. Steward Partners has two working &mdash; the third is the opportunity this benchmark measures.</p>
+
+  <div class="stool-grid">
+    <div class="stool-card">
+      <div class="stool-card__icon stool-card__icon--referrals">&rArr;</div>
+      <h4>Referrals</h4>
+      <p>The primary growth engine for most firms. Existing clients refer friends, family, colleagues. It works, but it doesn't scale predictably and you can't control the volume. When referrals slow down, there's no lever to pull.</p>
+    </div>
+    <div class="stool-card">
+      <div class="stool-card__icon stool-card__icon--coi">&harr;</div>
+      <h4>Centers of Influence</h4>
+      <p>CPAs, estate attorneys, insurance professionals who send clients your way. Strong COI relationships take years to build and depend on individual people. When a key COI retires or moves, that pipeline goes with them.</p>
+    </div>
+    <div class="stool-card">
+      <div class="stool-card__icon stool-card__icon--organic">&uarr;</div>
+      <h4>Organic Visibility</h4>
+      <p>The firms winning market share right now are the ones who built this. Creative Planning, Mariner Wealth, Hightower &mdash; they all have location pages, service content, and directory infrastructure in every market they serve. When someone in Dallas searches &ldquo;wealth management firm near me,&rdquo; those firms show up. Firms without that infrastructure don&rsquo;t exist in that search. This is the only leg that compounds over time without adding headcount.</p>
+    </div>
+  </div>
+
+  <div class="stool-footnote">Referrals and COI relationships are working for Steward Partners. The third leg represents the largest untapped growth channel. This benchmark measures the size of that gap across 5 markets, and what it would take to build the organic infrastructure that turns 80+ offices into search assets.</div>
+</section>
+
+<section id="exec-summary">
+  <div class="eyebrow">01 &mdash; Overview</div>
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-desc">Where stewardpartners.com stands across 5 U.S. markets &mdash; and what the data reveals about the structural gap.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-value">100</div><div class="kpi-label">Keywords Tracked Across 5 Markets</div></div>
+    <div class="kpi-card kpi-card--accent"><div class="kpi-value">0</div><div class="kpi-label">stewardpartners.com Page 1 Rankings</div></div>
+    <div class="kpi-card"><div class="kpi-value">5</div><div class="kpi-label">Markets Assessed</div></div>
+    <div class="kpi-card"><div class="kpi-value">5,440</div><div class="kpi-label">Aggregate Monthly Search Vol.</div></div>
+  </div>
+
+  <div class="callout-list">
+    <div class="callout-item callout-item--red">
+      <div class="callout-icon callout-icon--red">!</div>
+      <div class="callout-text"><strong>Subdomain fragmentation.</strong> stewardpartners.com uses team-based subdomains (parkcitiesgroup.stewardpartners.com, ensignwealth.stewardpartners.com). Each subdomain builds its own domain authority instead of consolidating under the corporate domain.</div>
+    </div>
+    <div class="callout-item">
+      <div class="callout-icon callout-icon--amber">0</div>
+      <div class="callout-text"><strong>0 Page 1 ranking(s)</strong> out of <span class="stat">100</span> tracked keywords representing <span class="stat">5,440</span> monthly searches across 5 markets.</div>
+    </div>
+    <div class="callout-item">
+      <div class="callout-icon callout-icon--amber">80+</div>
+      <div class="callout-text"><strong>80+ offices with no indexable location pages.</strong> Steward Partners has no /locations/ hub, no state pages, no city pages. ~$50B in AUM with no local organic infrastructure.</div>
+    </div>
+    <div class="callout-item callout-item--green">
+      <div class="callout-icon callout-icon--green">+</div>
+      <div class="callout-text"><strong>Employee-owned independent partnership</strong> &mdash; a structural differentiator that competitors cannot replicate. A dedicated content strategy can turn this positioning into organic visibility across every market Steward Partners serves.</div>
+    </div>
+  </div>
+
+  <div class="data-source">Data source: SEMRush &bull; 100 keywords tracked across 5 markets &bull; Generated June 9, 2026</div>
+</section>
+
+<section id="architecture-overview">
+  <div class="eyebrow">The Gap</div>
+  <h2 class="section-title">Site Architecture Comparison</h2>
+  <p class="section-desc">Every competitor that ranks locally has dedicated location pages. Steward Partners fragments authority across subdomains.</p>
+
+  <div class="arch-grid">
+    <div class="arch-card arch-card--danger">
+      <div class="arch-card__name">Steward Partners</div>
+      <div class="arch-card__domain">stewardpartners.com</div>
+      <div class="arch-card__label">Subdomain &mdash; Team Microsites (Fragmented)</div>
+      <div class="tree"><span class="node">stewardpartners.com/</span> <span style="font-size:10px;color:var(--text-muted);">(corporate only)</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">parkcitiesgroup.stewardpartners.com</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">zizmerjonesgroup.stewardpartners.com</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">ensignwealth.stewardpartners.com</span><br>&nbsp;&nbsp;&#9492;&#9472;&#9472; <span class="url">freedomstreetpartners.stewardpartners.com</span><br><span style="color:#dc2626;font-size:10px;margin-top:4px;display:block;">No state, city, or service+city pages on primary domain</span></div>
+      <div class="arch-stat"><span class="arch-stat__num" style="color:#dc2626;">0</span> location pages on primary domain</div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-card__name">Mariner Wealth</div>
+      <div class="arch-card__domain">marinerwealthadvisors.com</div>
+      <div class="arch-card__label">Flat + Regional Groupings</div>
+      <div class="tree"><span class="node">/locations/</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">/locations/grand-rapids-michigan/</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">/locations/austin-texas/</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">/locations/chicago/</span> <span style="font-size:10px;color:var(--text-muted);">(metro)</span><br>&nbsp;&nbsp;&#9474;&nbsp;&nbsp;&nbsp;&#9492;&#9472;&#9472; <span class="url">/locations/chicago/naperville/</span></div>
+      <div class="arch-stat"><span class="arch-stat__num">~140</span> location pages</div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-card__name">Creative Planning</div>
+      <div class="arch-card__domain">creativeplanning.com</div>
+      <div class="arch-card__label">Metro-Area Pages</div>
+      <div class="tree"><span class="node">/locations/</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">/locations/chicagoland-area/</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">/locations/charlotte-area/</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">/locations/dallas-fort-worth-area/</span><br>&nbsp;&nbsp;&#9492;&#9472;&#9472; <span class="url">/locations/denver-boulder-colorado-springs-area/</span></div>
+      <div class="arch-stat"><span class="arch-stat__num">127</span> location pages</div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-card__name">Hightower Advisors</div>
+      <div class="arch-card__domain">hightoweradvisors.com</div>
+      <div class="arch-card__label">Subdomain &mdash; Practice Microsites</div>
+      <div class="tree"><span class="node">hightoweradvisors.com/</span> <span style="font-size:10px;color:var(--text-muted);">(corporate only)</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">fortmyers.hightoweradvisors.com</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">buffalo.hightoweradvisors.com</span><br>&nbsp;&nbsp;&#9492;&#9472;&#9472; <span class="url">naples.hightoweradvisors.com</span></div>
+      <div class="arch-stat"><span class="arch-stat__num">140+</span> practice microsites</div>
+    </div>
+  </div>
+
+  <div class="content-card" style="margin-top:20px;">
+    <div class="content-card__body"><p>Steward Partners follows the same subdomain model as Hightower &mdash; each team operates a standalone microsite (parkcitiesgroup.stewardpartners.com, ensignwealth.stewardpartners.com, etc.) rather than building pages under the corporate domain. Google treats each subdomain as a semi-separate entity, which means <strong>domain authority earned by one team does not flow to another</strong>. Mariner and Creative Planning consolidate all location equity under their primary domain with /locations/ paths, compounding authority with every page they publish. Steward Partners has none of this on its primary domain.</p></div>
+  </div>
+</section>
+
+<div class="expand-cta" id="expand-cta">
+  <button class="expand-btn" id="expand-btn">
+    <span class="expand-btn__text">View Full Benchmark</span>
+    <span class="expand-btn__sub">Domain authority, site architecture, keyword rankings across 5 markets, gap analysis, opportunity sizing, and recommended build</span>
+    <span class="expand-btn__arrow">&darr;</span>
+  </button>
+</div>
+
+<div id="detail-sections" class="detail-sections">
+
+<section id="domain-authority">
+  <div class="eyebrow">02 &mdash; Domain Metrics</div>
+  <h2 class="section-title">Domain Authority Comparison</h2>
+  <p class="section-desc">Domain-level metrics from SEMRush show how each competitor&rsquo;s organic footprint compares to stewardpartners.com at the national level.</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Metric</th><th class="prospect-cell">stewardpartners.com</th><th>Morgan Stanley</th><th>Mariner Wealth</th><th>Mercer Advisors</th><th>Savant Wealth</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Organic Keywords</td><td class="prospect-cell">*</td><td>359K</td><td>44K</td><td>39K</td><td>13K</td></tr>
+<tr><td>Organic Traffic (mo.)</td><td class="prospect-cell">*</td><td>957K</td><td>34K</td><td>52K</td><td>13K</td></tr>
+<tr><td>Organic Traffic Cost</td><td class="prospect-cell">*</td><td>$2.3M</td><td>$107K</td><td>$111K</td><td>$38K</td></tr>
+<tr><td>Avg. Market Coverage</td><td class="prospect-cell" style="color:#dc2626;font-weight:700;">3%</td><td>32%</td><td>18%</td><td>30%</td><td>25%</td></tr>
+
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:11px;color:var(--text-muted);margin-top:8px;">* stewardpartners.com domain-level metrics are limited because the site returns a redirect/blocking response to crawlers (SEMRush Lighthouse organic visibility score: 40). Competitor metrics are from SEMRush domain overview.</p>
+
+  <div class="content-card" style="margin-top:24px;">
+    <div class="content-card__heading">What This Tells Us</div>
+    <div class="content-card__body">
+      <p>Steward Partners&rsquo; primary domain has limited organic exposure to search engines. SEMRush Lighthouse reports an organic visibility score of <strong>40</strong> with the page blocked from indexing and missing meta descriptions. Meanwhile, direct advisory peers like Mariner Wealth (34K monthly visits from 44K keywords) and Mercer Advisors (52K monthly visits from 39K keywords) have built substantial organic footprints through dedicated location architectures.</p>
+    </div>
+  </div>
+</section>
+
+<section id="architecture">
+  <div class="eyebrow">03 &mdash; Site Structure</div>
+  <h2 class="section-title">Architecture Comparison</h2>
+  <p class="section-desc">Competitors who rank in local search share a common pattern: they build dedicated location pages on their primary domain. Steward Partners fragments authority across subdomains.</p>
+
+  <div class="arch-grid">
+    <div class="arch-card arch-card--danger">
+      <div class="arch-card__name">Steward Partners</div>
+      <div class="arch-card__domain">stewardpartners.com</div>
+      <div class="arch-card__label">Subdomain &mdash; Team Microsites (Fragmented)</div>
+      <div class="tree"><span class="node">stewardpartners.com/</span> <span style="font-size:10px;color:var(--text-muted);">(corporate only)</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">parkcitiesgroup.stewardpartners.com</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">zizmerjonesgroup.stewardpartners.com</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">ensignwealth.stewardpartners.com</span><br>&nbsp;&nbsp;&#9492;&#9472;&#9472; <span class="url">freedomstreetpartners.stewardpartners.com</span></div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-card__name">Mariner Wealth</div>
+      <div class="arch-card__domain">marinerwealthadvisors.com</div>
+      <div class="arch-card__label">Flat + Regional Groupings</div>
+      <div class="tree"><span class="node">/locations/</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">/locations/grand-rapids-michigan/</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">/locations/austin-texas/</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">/locations/sarasota-florida/</span></div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-card__name">Creative Planning</div>
+      <div class="arch-card__domain">creativeplanning.com</div>
+      <div class="arch-card__label">Metro-Area Pages</div>
+      <div class="tree"><span class="node">/locations/</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">/locations/dallas-fort-worth-area/</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">/locations/new-york-metro/</span><br>&nbsp;&nbsp;&#9492;&#9472;&#9472; <span class="url">/locations/washington-dc-area/</span></div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-card__name">Hightower Advisors</div>
+      <div class="arch-card__domain">hightoweradvisors.com</div>
+      <div class="arch-card__label">Subdomain &mdash; Practice Microsites</div>
+      <div class="tree"><span class="node">hightoweradvisors.com/</span> <span style="font-size:10px;color:var(--text-muted);">(corporate only)</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">fortmyers.hightoweradvisors.com</span><br>&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="url">buffalo.hightoweradvisors.com</span><br>&nbsp;&nbsp;&#9492;&#9472;&#9472; <span class="url">naples.hightoweradvisors.com</span></div>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <div class="content-card__heading">The Pattern</div>
+    <div class="content-card__body"><p>Every competitor that ranks locally has invested in some form of location-based URL architecture. The specific approach varies &mdash; hierarchical paths or subdomain microsites &mdash; but the principle is consistent: <strong>dedicated, indexable pages for each market</strong>. Steward Partners uses the same subdomain model as Hightower but without Hightower&rsquo;s scale or content depth. The result is fragmented authority across dozens of microsites, none of which rank for core local advisory terms.</p></div>
+  </div>
+
+  <div class="divider"></div>
+  <h3 class="section-title" style="font-size:22px;margin-top:24px;">Architecture Deep-Dive</h3>
+
+  <div class="table-scroll" style="margin-top:16px;">
+    <table>
+      <thead><tr><th>Competitor</th><th>URL Pattern</th><th>Example URL</th><th>Est. Location Pages</th><th>State Rollups</th><th>City Pages</th><th>Service+City</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:700;color:#dc2626;">Steward Partners</td><td>Subdomain microsites per team</td><td><span class="url-example">parkcitiesgroup.stewardpartners.com</span></td><td style="text-align:center;">0 (on primary)</td><td style="text-align:center;"><span class="no">No</span></td><td style="text-align:center;"><span class="no">No</span></td><td style="text-align:center;"><span class="no">No</span></td></tr>
+        <tr><td style="font-weight:700;">Mariner Wealth</td><td>Flat /locations/city-state/ with regional groupings</td><td><span class="url-example">marinerwealthadvisors.com/locations/sarasota-florida/</span></td><td style="text-align:center;">~140</td><td style="text-align:center;"><span class="no">No</span></td><td style="text-align:center;"><span class="yes">Yes</span></td><td style="text-align:center;"><span class="no">No</span></td></tr>
+        <tr><td style="font-weight:700;">Creative Planning</td><td>Metro-area pages under /locations/</td><td><span class="url-example">creativeplanning.com/locations/dallas-fort-worth-area/</span></td><td style="text-align:center;">127</td><td style="text-align:center;"><span class="no">No</span></td><td style="text-align:center;"><span class="yes">Yes</span></td><td style="text-align:center;"><span class="no">No</span></td></tr>
+        <tr><td style="font-weight:700;">Hightower</td><td>Subdomain per practice (not path-based)</td><td><span class="url-example">fortmyers.hightoweradvisors.com</span></td><td style="text-align:center;">140+*</td><td style="text-align:center;"><span class="no">No</span></td><td style="text-align:center;"><span class="partial">Partial</span></td><td style="text-align:center;"><span class="no">No</span></td></tr>
+        <tr><td style="font-weight:700;">Morgan Stanley</td><td>Subdomain advisor portal</td><td><span class="url-example">advisor.morganstanley.com</span></td><td style="text-align:center;">500+</td><td style="text-align:center;"><span class="yes">Yes</span></td><td style="text-align:center;"><span class="yes">Yes</span></td><td style="text-align:center;"><span class="yes">Yes</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">*Hightower&rsquo;s 140+ practice sites live on individual subdomains rather than as path-based pages under the main domain. Steward Partners follows a similar model. Both fragment domain authority across microsites instead of consolidating it under a unified /locations/ hierarchy.</p>
+
+  <div class="content-card" style="margin-top:24px;">
+    <div class="content-card__heading">What Location Architecture Enables</div>
+    <div class="content-card__body">
+      <p>A proper location hierarchy does three things that subdomain microsites cannot:</p>
+      <p><strong>1. Consolidated authority</strong> &mdash; All location pages benefit from the domain authority of stewardpartners.com. Subdomains start from zero.</p>
+      <p><strong>2. Internal link equity</strong> &mdash; State rollup pages pass authority to city pages, which pass to individual advisor profiles. This compounds over time.</p>
+      <p><strong>3. Service+City combinations</strong> &mdash; The highest-converting keywords pair a service with a city (&ldquo;wealth management Dallas&rdquo;). Without dedicated pages on the primary domain, there&rsquo;s nothing to rank.</p>
+    </div>
+  </div>
+</section>
+
+<section id="markets">
+  <div class="eyebrow">04 &mdash; Keyword Data</div>
+  <h2 class="section-title">Market-by-Market Rankings</h2>
+  <p class="section-desc">Keywords with measurable search volume per market. Lower number = higher ranking. A dash indicates the domain does not rank in the top 100.</p>
+
+  <div class="market-tabs-wrap">
+    <div class="market-tabs-label">Select a market <span>&darr;</span></div>
+    <div class="market-tabs">
+      <button class="market-tab active" data-market="0">Washington DC</button>
+<button class="market-tab" data-market="1">Sarasota FL</button>
+<button class="market-tab" data-market="2">Dallas TX</button>
+<button class="market-tab" data-market="3">New York NY</button>
+<button class="market-tab" data-market="4">Bergen County NJ</button>
+
+    </div>
+  </div>
+
+  <div class="market-panel active" data-market="0">
+<div class="market-table-wrap">
+    <div class="market-table-header">
+        <h3>Washington, DC</h3>
+        <p>15 keywords tracked &middot; 910 monthly searches &middot;
+            stewardpartners.com ranks for 0 of 15 on Page 1</p>
+    </div>
+    <div class="scroll-hint">Scroll to see all competitors</div>
+    <div class="table-scroll">
+    <table class="ranking-table">
+        <thead>
+            <tr>
+                <th class="col-keyword">Keyword</th>
+                <th class="col-vol">Vol.</th>
+                <th class="col-prospect">stewardpartners.com</th>
+                <th class="col-comp">Washingtonian<span class="scope-badge scope-national">National</span></th>
+<th class="col-comp">Mercer Advisors<span class="scope-badge scope-local">Local</span></th>
+<th class="col-comp">Morgan Stanley<span class="scope-badge scope-national">National</span></th>
+<th class="col-comp">Tristatefa<span class="scope-badge scope-local">Local</span></th>
+<th class="col-comp">Districtcapital Management<span class="scope-badge scope-local">Local</span></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+  <td class="col-keyword">financial advisor washington dc</td>
+  <td class="col-vol">480</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">2</td>
+  <td class="heatmap-top3">3</td>
+  <td class="heatmap-top3">1</td>
+  <td class="heatmap-top10">5</td>
+  <td class="heatmap-mid">15</td>
+</tr>
+<tr>
+  <td class="col-keyword">financial planner washington dc</td>
+  <td class="col-vol">50</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">1</td>
+  <td class="heatmap-top10">10</td>
+  <td class="heatmap-top10">7</td>
+  <td class="heatmap-top3">3</td>
+  <td class="heatmap-top10">4</td>
+</tr>
+<tr>
+  <td class="col-keyword">registered investment advisor washington dc</td>
+  <td class="col-vol">50</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">3</td>
+  <td class="heatmap-top10">7</td>
+  <td class="heatmap-mid">96</td>
+  <td class="heatmap-mid">12</td>
+  <td class="heatmap-mid">21</td>
+</tr>
+<tr>
+  <td class="col-keyword">wealth management washington dc</td>
+  <td class="col-vol">50</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-mid">12</td>
+  <td class="heatmap-mid">17</td>
+  <td class="heatmap-mid">14</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">investment advisor washington dc</td>
+  <td class="col-vol">40</td>
+  <td class="cell-prospect heatmap-mid">27</td>
+  <td class="heatmap-top3">1</td>
+  <td class="heatmap-mid">22</td>
+  <td class="heatmap-top3">2</td>
+  <td class="heatmap-top10">4</td>
+  <td class="heatmap-top10">6</td>
+</tr>
+<tr>
+  <td class="col-keyword">retirement planning washington dc</td>
+  <td class="col-vol">40</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-mid">17</td>
+  <td class="heatmap-top10">8</td>
+  <td class="heatmap-top3">3</td>
+  <td class="heatmap-top10">7</td>
+  <td class="heatmap-mid">72</td>
+</tr>
+<tr>
+  <td class="col-keyword">wealth advisor washington dc</td>
+  <td class="col-vol">40</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">certified financial planner washington dc</td>
+  <td class="col-vol">30</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">1</td>
+  <td class="heatmap-top10">6</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="heatmap-mid">66</td>
+  <td class="heatmap-mid">16</td>
+</tr>
+<tr>
+  <td class="col-keyword">family office services washington dc</td>
+  <td class="col-vol">30</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">best financial advisor washington dc</td>
+  <td class="col-vol">20</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">fee only financial advisor washington dc</td>
+  <td class="col-vol">20</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">high net worth financial advisor washington dc</td>
+  <td class="col-vol">20</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">top financial advisors washington dc</td>
+  <td class="col-vol">20</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">fiduciary financial advisor washington dc</td>
+  <td class="col-vol">10</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">independent financial advisor washington dc</td>
+  <td class="col-vol">10</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+
+        </tbody>
+    </table>
+    </div>
+</div>
+</div><div class="market-panel" data-market="1">
+<div class="market-table-wrap">
+    <div class="market-table-header">
+        <h3>Sarasota, FL</h3>
+        <p>7 keywords tracked &middot; 630 monthly searches &middot;
+            stewardpartners.com ranks for 0 of 7 on Page 1</p>
+    </div>
+    <div class="scroll-hint">Scroll to see all competitors</div>
+    <div class="table-scroll">
+    <table class="ranking-table">
+        <thead>
+            <tr>
+                <th class="col-keyword">Keyword</th>
+                <th class="col-vol">Vol.</th>
+                <th class="col-prospect">stewardpartners.com</th>
+                <th class="col-comp">Mariner Wealth Advisors<span class="scope-badge scope-local">Local</span></th>
+<th class="col-comp">Srq Wealth<span class="scope-badge scope-local">Local</span></th>
+<th class="col-comp">Waverly Advisors<span class="scope-badge scope-local">Local</span></th>
+<th class="col-comp">Hbks Wealth<span class="scope-badge scope-local">Local</span></th>
+<th class="col-comp">Floridafa<span class="scope-badge scope-local">Local</span></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+  <td class="col-keyword">financial advisor sarasota</td>
+  <td class="col-vol">260</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">1</td>
+  <td class="heatmap-mid">11</td>
+  <td class="heatmap-top10">8</td>
+  <td class="heatmap-top10">9</td>
+  <td class="heatmap-top10">5</td>
+</tr>
+<tr>
+  <td class="col-keyword">wealth management sarasota</td>
+  <td class="col-vol">210</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">1</td>
+  <td class="heatmap-top3">2</td>
+  <td class="heatmap-top10">9</td>
+  <td class="heatmap-mid">12</td>
+  <td class="heatmap-mid">29</td>
+</tr>
+<tr>
+  <td class="col-keyword">retirement planning sarasota</td>
+  <td class="col-vol">70</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="heatmap-top3">1</td>
+  <td class="heatmap-top10">9</td>
+  <td class="heatmap-top10">6</td>
+  <td class="heatmap-top3">2</td>
+</tr>
+<tr>
+  <td class="col-keyword">financial planner sarasota</td>
+  <td class="col-vol">40</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top10">6</td>
+  <td class="heatmap-top10">8</td>
+  <td class="heatmap-top10">5</td>
+  <td class="heatmap-top10">7</td>
+  <td class="heatmap-mid">14</td>
+</tr>
+<tr>
+  <td class="col-keyword">best financial advisor sarasota</td>
+  <td class="col-vol">20</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">certified financial planner sarasota</td>
+  <td class="col-vol">20</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">investment advisor sarasota</td>
+  <td class="col-vol">10</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+
+        </tbody>
+    </table>
+    </div>
+</div>
+</div><div class="market-panel" data-market="2">
+<div class="market-table-wrap">
+    <div class="market-table-header">
+        <h3>Dallas, TX</h3>
+        <p>15 keywords tracked &middot; 2,570 monthly searches &middot;
+            stewardpartners.com ranks for 0 of 15 on Page 1</p>
+    </div>
+    <div class="scroll-hint">Scroll to see all competitors</div>
+    <div class="table-scroll">
+    <table class="ranking-table">
+        <thead>
+            <tr>
+                <th class="col-keyword">Keyword</th>
+                <th class="col-vol">Vol.</th>
+                <th class="col-prospect">stewardpartners.com</th>
+                <th class="col-comp">Dmagazine<span class="scope-badge scope-national">National</span></th>
+<th class="col-comp">Tolleson Wealth<span class="scope-badge scope-local">Local</span></th>
+<th class="col-comp">Sfmg<span class="scope-badge scope-local">Local</span></th>
+<th class="col-comp">Morgan Stanley<span class="scope-badge scope-national">National</span></th>
+<th class="col-comp">Fontanafinancial Planning<span class="scope-badge scope-local">Local</span></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+  <td class="col-keyword">financial advisor dallas</td>
+  <td class="col-vol">880</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">1</td>
+  <td class="heatmap-mid">34</td>
+  <td class="heatmap-top3">3</td>
+  <td class="heatmap-mid">14</td>
+  <td class="heatmap-mid">15</td>
+</tr>
+<tr>
+  <td class="col-keyword">wealth management dallas</td>
+  <td class="col-vol">590</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="heatmap-top3">2</td>
+  <td class="heatmap-top10">9</td>
+  <td class="heatmap-top10">6</td>
+  <td class="heatmap-mid">15</td>
+</tr>
+<tr>
+  <td class="col-keyword">retirement planning dallas</td>
+  <td class="col-vol">320</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-mid">57</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="heatmap-mid">17</td>
+  <td class="heatmap-top10">9</td>
+</tr>
+<tr>
+  <td class="col-keyword">financial planner dallas</td>
+  <td class="col-vol">260</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">3</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="heatmap-mid">38</td>
+  <td class="heatmap-top3">1</td>
+</tr>
+<tr>
+  <td class="col-keyword">certified financial planner dallas</td>
+  <td class="col-vol">90</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">1</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="heatmap-mid">11</td>
+  <td class="heatmap-mid">13</td>
+</tr>
+<tr>
+  <td class="col-keyword">best financial advisor dallas</td>
+  <td class="col-vol">70</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">1</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="heatmap-top10">6</td>
+  <td class="heatmap-mid">16</td>
+  <td class="heatmap-mid">76</td>
+</tr>
+<tr>
+  <td class="col-keyword">fiduciary financial advisor dallas</td>
+  <td class="col-vol">70</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="heatmap-mid">82</td>
+  <td class="heatmap-mid">19</td>
+  <td class="heatmap-mid">58</td>
+</tr>
+<tr>
+  <td class="col-keyword">wealth advisor dallas</td>
+  <td class="col-vol">70</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="heatmap-top3">2</td>
+  <td class="heatmap-top3">1</td>
+  <td class="heatmap-mid">18</td>
+  <td class="heatmap-top3">3</td>
+</tr>
+<tr>
+  <td class="col-keyword">investment advisor dallas</td>
+  <td class="col-vol">50</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">1</td>
+  <td class="heatmap-top10">4</td>
+  <td class="heatmap-top3">3</td>
+  <td class="heatmap-top10">5</td>
+  <td class="heatmap-mid">15</td>
+</tr>
+<tr>
+  <td class="col-keyword">best wealth management firms dallas</td>
+  <td class="col-vol">40</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="heatmap-top3">2</td>
+  <td class="heatmap-top10">4</td>
+  <td class="heatmap-top10">10</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">family office services dallas</td>
+  <td class="col-vol">40</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">registered investment advisor dallas</td>
+  <td class="col-vol">30</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">2</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="heatmap-mid">17</td>
+  <td class="heatmap-mid">95</td>
+</tr>
+<tr>
+  <td class="col-keyword">top financial advisors dallas</td>
+  <td class="col-vol">30</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">1</td>
+  <td class="heatmap-top10">6</td>
+  <td class="heatmap-top10">5</td>
+  <td class="heatmap-mid">31</td>
+  <td class="heatmap-mid">47</td>
+</tr>
+<tr>
+  <td class="col-keyword">fee only financial advisor dallas</td>
+  <td class="col-vol">20</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">retirement advisor dallas</td>
+  <td class="col-vol">10</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+
+        </tbody>
+    </table>
+    </div>
+</div>
+</div><div class="market-panel" data-market="3">
+<div class="market-table-wrap">
+    <div class="market-table-header">
+        <h3>New York, NY</h3>
+        <p>11 keywords tracked &middot; 1,220 monthly searches &middot;
+            stewardpartners.com ranks for 0 of 11 on Page 1</p>
+    </div>
+    <div class="scroll-hint">Scroll to see all competitors</div>
+    <div class="table-scroll">
+    <table class="ranking-table">
+        <thead>
+            <tr>
+                <th class="col-keyword">Keyword</th>
+                <th class="col-vol">Vol.</th>
+                <th class="col-prospect">stewardpartners.com</th>
+                <th class="col-comp">Drucker Wealth<span class="scope-badge scope-local">Local</span></th>
+<th class="col-comp">New York Life<span class="scope-badge scope-national">National</span></th>
+<th class="col-comp">Mariner Wealth Advisors<span class="scope-badge scope-local">Local</span></th>
+<th class="col-comp">Savant Wealth<span class="scope-badge scope-local">Local</span></th>
+<th class="col-comp">Morgan Stanley<span class="scope-badge scope-national">National</span></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+  <td class="col-keyword">financial advisor new york</td>
+  <td class="col-vol">480</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">3</td>
+  <td class="heatmap-top10">5</td>
+  <td class="heatmap-top3">2</td>
+  <td class="heatmap-top10">6</td>
+  <td class="heatmap-mid">16</td>
+</tr>
+<tr>
+  <td class="col-keyword">wealth management new york</td>
+  <td class="col-vol">260</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-mid">19</td>
+  <td class="heatmap-top10">7</td>
+  <td class="heatmap-top10">10</td>
+  <td class="heatmap-mid">17</td>
+  <td class="heatmap-mid">14</td>
+</tr>
+<tr>
+  <td class="col-keyword">financial planner new york</td>
+  <td class="col-vol">210</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">2</td>
+  <td class="heatmap-mid">28</td>
+  <td class="heatmap-mid">26</td>
+  <td class="heatmap-mid">19</td>
+  <td class="heatmap-mid">22</td>
+</tr>
+<tr>
+  <td class="col-keyword">wealth advisor new york</td>
+  <td class="col-vol">90</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-top3">3</td>
+  <td class="heatmap-top10">5</td>
+  <td class="heatmap-top3">2</td>
+  <td class="heatmap-top10">9</td>
+  <td class="heatmap-mid">13</td>
+</tr>
+<tr>
+  <td class="col-keyword">certified financial planner new york</td>
+  <td class="col-vol">50</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-mid">24</td>
+  <td class="heatmap-top10">6</td>
+  <td class="heatmap-mid">86</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="heatmap-mid">33</td>
+</tr>
+<tr>
+  <td class="col-keyword">investment advisor new york</td>
+  <td class="col-vol">50</td>
+  <td class="cell-prospect heatmap-mid">31</td>
+  <td class="heatmap-top10">6</td>
+  <td class="heatmap-mid">15</td>
+  <td class="heatmap-top3">3</td>
+  <td class="heatmap-mid">32</td>
+  <td class="heatmap-mid">19</td>
+</tr>
+<tr>
+  <td class="col-keyword">retirement planning new york</td>
+  <td class="col-vol">30</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="heatmap-top3">3</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="heatmap-mid">15</td>
+  <td class="heatmap-mid">26</td>
+</tr>
+<tr>
+  <td class="col-keyword">registered investment advisor new york</td>
+  <td class="col-vol">20</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">family office services new york</td>
+  <td class="col-vol">10</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">independent financial advisor new york</td>
+  <td class="col-vol">10</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">retirement advisor new york</td>
+  <td class="col-vol">10</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+
+        </tbody>
+    </table>
+    </div>
+</div>
+</div><div class="market-panel" data-market="4">
+<div class="market-table-wrap">
+    <div class="market-table-header">
+        <h3>Bergen County, NJ</h3>
+        <p>5 keywords tracked &middot; 110 monthly searches &middot;
+            stewardpartners.com ranks for 0 of 5 on Page 1</p>
+    </div>
+    <div class="scroll-hint">Scroll to see all competitors</div>
+    <div class="table-scroll">
+    <table class="ranking-table">
+        <thead>
+            <tr>
+                <th class="col-keyword">Keyword</th>
+                <th class="col-vol">Vol.</th>
+                <th class="col-prospect">stewardpartners.com</th>
+                <th class="col-comp">Wiser Advisor<span class="scope-badge scope-local">Local</span></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+  <td class="col-keyword">financial advisor paramus nj</td>
+  <td class="col-vol">40</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="heatmap-mid">16</td>
+</tr>
+<tr>
+  <td class="col-keyword">financial advisor ramsey nj</td>
+  <td class="col-vol">30</td>
+  <td class="cell-prospect heatmap-mid">45</td>
+  <td class="heatmap-mid">11</td>
+</tr>
+<tr>
+  <td class="col-keyword">financial planner bergen county nj</td>
+  <td class="col-vol">20</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">financial advisor bergen county</td>
+  <td class="col-vol">10</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+<tr>
+  <td class="col-keyword">independent financial advisor bergen county</td>
+  <td class="col-vol">10</td>
+  <td class="cell-prospect cell-empty">&ndash;</td>
+  <td class="cell-empty">&ndash;</td>
+</tr>
+
+        </tbody>
+    </table>
+    </div>
+</div>
+</div>
+
+</section>
+
+<section id="gap-analysis">
+  <div class="eyebrow">05 &mdash; Competitive Gap</div>
+  <h2 class="section-title">Aggregate Gap Analysis</h2>
+
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-value">100</div><div class="kpi-label">Total Keywords Tracked</div></div>
+    <div class="kpi-card kpi-card--accent"><div class="kpi-value">0</div><div class="kpi-label">stewardpartners.com Page 1 Rankings</div></div>
+    <div class="kpi-card"><div class="kpi-value">5,440</div><div class="kpi-label">Monthly Searches Steward Partners Misses</div></div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:18px;font-weight:700;margin:24px 0 16px;">Market-by-Market Summary</h3>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Market</th><th>Keywords</th><th class="prospect-cell">stewardpartners.com Page 1</th><th>Best Competitor Page 1</th><th>Monthly Search Vol.</th><th>Missed Volume</th></tr></thead>
+      <tbody>
+        <tr>
+    <td>Washington DC</td>
+    <td>20</td>
+    <td class="prospect-cell" style="color:#dc2626;font-weight:700;">0</td>
+    <td>5</td>
+    <td>910</td>
+    <td>910</td>
+</tr><tr>
+    <td>Sarasota FL</td>
+    <td>20</td>
+    <td class="prospect-cell" style="color:#dc2626;font-weight:700;">0</td>
+    <td>4</td>
+    <td>630</td>
+    <td>630</td>
+</tr><tr>
+    <td>Dallas TX</td>
+    <td>20</td>
+    <td class="prospect-cell" style="color:#dc2626;font-weight:700;">0</td>
+    <td>7</td>
+    <td>2,570</td>
+    <td>2,570</td>
+</tr><tr>
+    <td>New York NY</td>
+    <td>20</td>
+    <td class="prospect-cell" style="color:#dc2626;font-weight:700;">0</td>
+    <td>5</td>
+    <td>1,220</td>
+    <td>1,220</td>
+</tr><tr>
+    <td>Bergen County NJ</td>
+    <td>20</td>
+    <td class="prospect-cell" style="color:#dc2626;font-weight:700;">0</td>
+    <td>0</td>
+    <td>110</td>
+    <td>110</td>
+</tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="data-source" style="margin-top:12px;">Each row shows one of the 5 markets benchmarked. &ldquo;stewardpartners.com Page 1&rdquo; is how many tracked keywords Steward Partners ranks in the top 10. &ldquo;Best Competitor Page 1&rdquo; is the highest count any single competitor achieves. &ldquo;Missed Volume&rdquo; is the total monthly search volume for keywords where stewardpartners.com has no Page 1 presence. 100 keywords were researched across 5 markets (20 per market). Keywords with zero measured search volume are excluded from the ranking tables above but included in the market-by-market totals.</div>
+</section>
+
+<section id="opportunity">
+  <div class="eyebrow">06 &mdash; Business Impact</div>
+  <h2 class="section-title">Opportunity Sizing</h2>
+  <p class="section-desc">Translating the visibility gap into business terms. Estimates based on competitor organic traffic data and industry-standard click-through rates.</p>
+
+  <div class="opp-grid">
+    <div class="opp-card"><div class="opp-card__value">33K</div><div class="opp-card__label">Avg. RIA Peer Monthly Organic Visits</div><div class="opp-card__detail">Average across direct advisory peers (Mariner Wealth, Mercer Advisors, Savant Wealth) with dedicated location architectures</div></div>
+    <div class="opp-card"><div class="opp-card__value">$86K</div><div class="opp-card__label">RIA Peer CPC-Equivalent Monthly Value</div><div class="opp-card__detail">What advisory peers would pay for equivalent traffic through Google Ads &mdash; approximately $1M annually</div></div>
+    <div class="opp-card"><div class="opp-card__value">50&ndash;200</div><div class="opp-card__label">Avg. Organic KWs per Location Page</div><div class="opp-card__detail">What a dedicated location page typically earns in indexed keywords</div></div>
+  </div>
+
+  <div class="narrative">
+    <p>Direct advisory peers are capturing substantial organic traffic that Steward Partners cannot access. Mercer Advisors generates 52K monthly visits from 39K indexed keywords, Mariner Wealth captures 34K monthly visits from 44K keywords, and even focused local firms like Drucker Wealth generate 3,200 monthly visits from dedicated location pages. Morgan Stanley&rsquo;s advisor subdomain, operating at wirehouse scale, captures 957K monthly visits.</p>
+    <p>A Corp &rarr; State &rarr; Office &rarr; City architecture spanning 80+ offices creates hundreds of location-specific landing pages. This foundation enables Steward Partners to compete for the 5,440+ monthly searches currently captured by competitors, transforming near-zero local rankings into measurable organic prospect acquisition while building structural enterprise value.</p>
+  </div>
+</section>
+
+<section id="recommendations">
+  <div class="eyebrow">07 &mdash; Recommended Build</div>
+  <h2 class="section-title">Recommended Architecture</h2>
+  <p class="section-desc">The proposed location hierarchy gives every Steward Partners office a dedicated, indexable presence on the primary domain.</p>
+
+  <div class="arch-diagram">
+    <div class="arch-level"><div class="arch-level__box arch-level__box--active"><div class="arch-level__label">Corporate Hub</div><div class="arch-level__url">/locations/</div></div><div class="arch-level__arrow">&rarr;</div><div class="arch-level__desc">National directory of all 80+ offices. Internal link equity hub. Targets &ldquo;Steward Partners offices&rdquo; queries.</div></div>
+    <div class="arch-level"><div class="arch-level__box"><div class="arch-level__label">State Pages</div><div class="arch-level__url">/locations/texas/</div></div><div class="arch-level__arrow">&rarr;</div><div class="arch-level__desc">Rollup page per state. Aggregates offices, passes authority down. Targets &ldquo;financial advisor [state]&rdquo; terms.</div></div>
+    <div class="arch-level"><div class="arch-level__box"><div class="arch-level__label">Office Pages</div><div class="arch-level__url">/locations/texas/dallas/</div></div><div class="arch-level__arrow">&rarr;</div><div class="arch-level__desc">Dedicated page per office with team, address, services. Primary ranking target for &ldquo;financial advisor [city]&rdquo;.</div></div>
+    <div class="arch-level"><div class="arch-level__box"><div class="arch-level__label">Service + City</div><div class="arch-level__url">/locations/texas/dallas/wealth-management/</div></div><div class="arch-level__arrow">&rarr;</div><div class="arch-level__desc">Service-specific pages per city. Targets high-converting &ldquo;[service] [city]&rdquo; keywords.</div></div>
+  </div>
+
+  <div class="content-card" style="margin-bottom:24px;">
+    <div class="content-card__heading">Subdomain Migration Path</div>
+    <div class="content-card__body">
+      <p>Existing team subdomains (parkcitiesgroup.stewardpartners.com, etc.) can coexist with the new location architecture during transition. The recommended approach is to build the /locations/ hierarchy first, then redirect team subdomains to their corresponding office pages over time. This preserves any existing equity while consolidating future authority under the primary domain.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:18px;font-weight:700;margin-bottom:16px;">What the Build Includes</h3>
+  <div class="service-tags">
+    <div class="service-tag">Web Design</div>
+    <div class="service-tag">Development</div>
+    <div class="service-tag">Search Architecture</div>
+    <div class="service-tag">Content Strategy</div>
+    <div class="service-tag">Directory Management</div>
+  </div>
+
+  <div class="narrative" style="margin-top:16px;">
+    <p>The build covers site architecture, page templates, local content, directory listings, and ongoing organic visibility management. The result is a compounding asset that drives visibility across every market Steward Partners serves &mdash; building structural enterprise value with every page published.</p>
+  </div>
+</section>
+
+<section id="investment">
+  <div class="eyebrow">08 &mdash; Investment</div>
+  <h2 class="section-title">What this costs</h2>
+  <p class="section-desc">Ballpark range before a deeper scoping conversation. Covers design, build, ongoing management, and organic visibility across the full platform.</p>
+
+  <div class="invest-grid">
+    <div class="invest-card">
+      <div class="invest-card__eyebrow">Corporate Infrastructure</div>
+      <div class="invest-card__price">$3,000</div>
+      <div class="invest-card__unit">per month</div>
+      <ul class="invest-card__list">
+        <li>Location hub design + build</li>
+        <li>State rollup page templates</li>
+        <li>Site architecture + internal linking</li>
+        <li>Ongoing organic visibility management</li>
+        <li>Reporting + performance tracking</li>
+      </ul>
+    </div>
+    <div class="invest-card">
+      <div class="invest-card__eyebrow">Per Location</div>
+      <div class="invest-card__price">$325</div>
+      <div class="invest-card__unit">per location / month</div>
+      <ul class="invest-card__list">
+        <li>Dedicated office page design + build</li>
+        <li>Service + city page content</li>
+        <li>Google Business Profile management</li>
+        <li>Directory listings + NAP consistency</li>
+        <li>Local organic visibility optimization</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="narrative" style="font-size:12px;color:var(--text-muted);margin-top:16px;">
+    <p>Preliminary range based on benchmark findings. A deeper discovery and technical audit would be required to lock in a formal proposal.</p>
+  </div>
+</section>
+
+</div><!-- /detail-sections -->
+
+<section id="cta" class="cta-section" style="border:none;">
+  <h2>Next Steps</h2>
+  <p>This benchmark identified a <strong>structural visibility gap</strong> across 5 markets. The fix is architectural: a location platform, content strategy, and directory infrastructure that turns 80+ offices into 80+ organic search assets &mdash; building enterprise value that compounds over time.</p>
+  <p>If walking through these findings would be useful, reach out.</p>
+  <p style="margin-top:8px;"><a href="mailto:wjb@mileagedesign.com" style="color:var(--accent);text-decoration:none;font-weight:600;">wjb@mileagedesign.com</a></p>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>Steward Partners Global Advisory</span>
+    <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;opacity:0.5;">Prepared by Mileage</span>
+  </div>
+</footer>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.market-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var m=this.getAttribute('data-market');
+      document.querySelectorAll('.market-tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.market-panel').forEach(p=>p.classList.remove('active'));
+      this.classList.add('active');
+      document.querySelector('.market-panel[data-market="'+m+'"]').classList.add('active');
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  var navLinks=document.querySelectorAll('.nav a');
+  var sections=document.querySelectorAll('main section[id]');
+  function updateNav() {
+    var current='';
+    sections.forEach(function(s){if(window.scrollY>=s.offsetTop-140) current=s.getAttribute('id');});
+    navLinks.forEach(function(l){l.classList.remove('active');if(l.getAttribute('href')==='#'+current) l.classList.add('active');});
+  }
+  window.addEventListener('scroll',updateNav); updateNav();
+});
+
+document.getElementById('expand-btn').addEventListener('click', function() {
+  var detail = document.getElementById('detail-sections');
+  var nav = document.querySelector('.nav');
+  var cta = document.getElementById('expand-cta');
+
+  detail.classList.add('expanded');
+  nav.classList.add('visible');
+  cta.classList.add('hidden');
+
+  var first = detail.querySelector('section');
+  if (first) first.scrollIntoView({ behavior: 'smooth' });
+});
+
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  var root = document.documentElement;
+  var KEY = 'steward-theme';
+
+  function setTheme(mode) {
+    if (mode === 'dark') {
+      root.setAttribute('data-theme', 'dark');
+      btn.innerHTML = '&#9788;';
+      btn.setAttribute('aria-label', 'Switch to light mode');
+    } else {
+      root.removeAttribute('data-theme');
+      btn.innerHTML = '&#9790;';
+      btn.setAttribute('aria-label', 'Switch to dark mode');
+    }
+    try { localStorage.setItem(KEY, mode); } catch(e) {}
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch(e) {}
+  if (saved === 'light') { setTheme('light'); }
+  else { setTheme('dark'); }
+
+  btn.addEventListener('click', function() {
+    var isDark = root.getAttribute('data-theme') === 'dark';
+    setTheme(isDark ? 'light' : 'dark');
+  });
+})();
+
+(function() {
+  document.querySelectorAll('.table-scroll').forEach(function(el) {
+    var wrap = document.createElement('div');
+    wrap.className = 'table-scroll-wrap';
+    el.parentNode.insertBefore(wrap, el);
+    wrap.appendChild(el);
+
+    var arrow = document.createElement('div');
+    arrow.className = 'scroll-arrow';
+    arrow.innerHTML = '\u2192';
+    wrap.appendChild(arrow);
+
+    var hint = wrap.previousElementSibling;
+    if (!hint || !hint.classList.contains('scroll-hint')) hint = null;
+
+    function check() {
+      var canScroll = el.scrollWidth > el.clientWidth + 2;
+      var atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 2;
+      wrap.classList.toggle('can-scroll', canScroll);
+      wrap.classList.toggle('scrolled-end', atEnd);
+      if (hint) hint.classList.toggle('visible', canScroll);
+    }
+
+    check();
+    el.addEventListener('scroll', check);
+    window.addEventListener('resize', check);
+  });
+})();
+
+document.getElementById('share-btn').addEventListener('click', function() {
+  var data = {
+    title: 'Corporate Visibility Platform Benchmark - Steward Partners Global Advisory',
+    text: 'Steward Partners Global Advisory organic visibility benchmark across 5 U.S. markets.',
+    url: window.location.href
+  };
+  if (navigator.share) {
+    navigator.share(data).catch(function(){});
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      var btn = document.getElementById('share-btn');
+      var orig = btn.innerHTML;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copied';
+      setTimeout(function(){ btn.innerHTML = orig; }, 2000);
+    });
+  }
+});
+</script>
+</body>
+</html>
